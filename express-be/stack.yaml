@@ -19,7 +19,7 @@ spec:
       - name: harbor-secret
       containers:
       - name: express-be
-        image: harbor.learnserver.online/express/express-web-be:latest
+        image: harbor.learnserver.online/express/express-web-be:3
         ports:
         - containerPort: 9999
 ---

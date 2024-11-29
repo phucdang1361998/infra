@@ -6,7 +6,7 @@ metadata:
     app: express-fe
   namespace: express
 spec:
-  replicas: 3
+  replicas: 6
   selector:
     matchLabels:
       app: express-fe

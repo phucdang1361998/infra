@@ -20,5 +20,6 @@ spec:
       containers:
       - name: express-fe
         image: harbor.learnserver.online/express/express-fe:latest
+        ports:
         - containerPort: 80 
 

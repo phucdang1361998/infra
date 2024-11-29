@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lottery
+  labels:
+    app: lottery
+  namespace: lottery
+spec:
+  replicas: 2 
+  selector:
+    matchLabels:
+      app: lottery
+  template:
+    metadata:
+      labels:
+        app: lottery
+    spec:
+      imagePullSecrets:
+      - name: harbor-secret
+      containers:
+      - name: lottery
+        image: harbor.learnserver.online/lottery/lottery:latest 
+        ports:
+        - containerPort: 80 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lottery-service
+  namespace: lottery
+spec:
+  selector:
+    app: lottery
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP 

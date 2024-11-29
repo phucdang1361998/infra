@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: express-be
+  labels:
+    app: express-be
+  namespace: express
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: express-be
+  template:
+    metadata:
+      labels:
+        app: express-be
+    spec:
+      imagePullSecrets:
+      - name: harbor-secret
+      containers:
+      - name: express-be
+        image: harbor.learnserver.online/express/express-web-be:latest
+        ports:
+        - containerPort: 9999
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: express-be-service
+  namespace: express
+spec:
+  selector:
+    app: express-be
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9999
+  type: ClusterIP

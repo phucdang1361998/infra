@@ -20,7 +20,7 @@ spec:
       - name: harbor-secret
       containers:
       - name: express-fe
-        image: harbor.learnserver.online/express/express-web-fe:b322648
+        image: harbor.learnserver.online/express/express-web-fe:db832ce
         ports:
         - containerPort: 80  
 ---
